@@ -4,28 +4,43 @@
 
 Create h1 element for website title
 Create gameboard
-Create create player1 and player2 scoreboards (names in input field so they can be changed???)
+Create create player1 and player2 scoreboards (names in input field so they can be changed???)(need to track wins somehow)
 create restart button
 create event listener for on click
-create event listener for on load (load empty gameboard and empty scoreboards)(newGame function?)
-create an array that indicates whether each tile has been played on or not
-create an array that indicates which piece (X or O) is in which tile (0-8 index) (key value pairs???)
-
+create event listener for on load (load empty gameboard and empty scoreboards)(createElements function and createGameBoard function)
+create 9 objects, each with a property that indicates which player (if any) has played a piece on that tile.
 
 #FUNCTIONALITY
 
-newGame function that loads all initial elements on the page
+createElements function
+function createElements(){
+    create h1 element for title
+    create scoreboards with input fields for usernames and games won element
+    create restart button
+}
 
-function newGame(){
-    loads elements to screen
-    elements needed: h1 title - an h1 html element
-     2 scoreboards (1 for each player) - container? with input field for player name and displays p element that shows games won by respective player.
-    gameboard - div for the board as a whole, 9 divs for each tile inside of the board div. (attach index number to each div respective to their position on gameboard)
-    restart button - button element that calls function on click
+createGameBoard function
+function createGameBoard(){
+    create gameboard itself
 }
 
 playPiece function that allows player to play piece and makes that tile unclickable
 
 function playPiece(){
-    
+    plays piece on board according to where user clicked
+    updates array with 1 of 2 values: X or O
+    changes player turn to opposing player
+    somehow make the tile unclickable???
+    call evalWinCon function at the end of this function
 }
+
+evalWinCon function is called at the end of the playPiece function. Evaluates if there is a winner or not and displays win message.
+
+function evalWinCon(){
+    evaluates the game state according to the 8 possible win conditions
+    win con possibilites - [0,1,2][0,3,6][0,4,8][1,4,7][2,5,8][3,4,5][6,7,8][2,4,6] (individual arrays or 1 big array???)
+    If 1 player achieves win condition, displays PlayerX Wins!
+    creates h1 element to display win message
+}
+
+MVC
