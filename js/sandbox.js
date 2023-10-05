@@ -36,6 +36,7 @@ function createElements(){
     const restartButton = document.createElement("button");
     restartButton.classList.add("col-2", "justify-content-center", "py-2", "rounded-pill")
     restartButton.textContent = "Restart Game";
+    restartButton.addEventListener("click", restartGame);
     buttonRow.appendChild(restartButton);
 
 }
@@ -46,6 +47,14 @@ function createTiles(index){
     tileElement.id = index;
     tileElement.addEventListener("click", playPiece);
     return tileElement;
+}
+
+function restartGame(){
+    for (let i=0; i<=8; i++){
+        let tileElement = document.getElementById(i);
+        tileElement.textContent = "";
+        tileElement.addEventListener("click", playPiece);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", createElements);
@@ -69,6 +78,8 @@ function playPiece(event){
     }
     turnPlayer = !turnPlayer;
 }
+
+let possibleWinCons = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6],[3,4,5],[6,7,8]];
 
 function evalWinCon(){
 
