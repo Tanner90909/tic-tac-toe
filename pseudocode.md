@@ -17,11 +17,11 @@ function createElements(){
     create h1 element for title
     create scoreboards with input fields for usernames and games won element
     create restart button
+    for loop that loops through createTiles function 9 times to make 9 tiles
 }
 
-createGameBoard function
-function createGameBoard(){
-    create gameboard itself
+function createTiles(){
+    creates 1 tile
 }
 
 playPiece function that allows player to play piece and makes that tile unclickable
@@ -44,3 +44,5 @@ function evalWinCon(){
 }
 
 MVC
+
+css border whatever side you need for the boxes on the gameboard. give them ids so you can call them in css
