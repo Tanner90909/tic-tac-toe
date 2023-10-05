@@ -44,15 +44,11 @@ function createTiles(index){
     const tileElement = document.createElement("button");
     tileElement.classList.add("col-4", "py-5", "text-center", "tiles");
     tileElement.id = index;
-    tileElement.textContent = "hello";
+    tileElement.addEventListener("click", playPiece);
     return tileElement;
 }
 
 document.addEventListener("DOMContentLoaded", createElements);
-
-const tilesButtons = document.getElementsByClassName("tiles");
-
-tilesButtons.addEventListener("click", playPiece);
 
 let turnPlayer = true;
 
@@ -61,8 +57,18 @@ let playedPiecesArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let player1Pieces = [];
 let player2Pieces = [];
 
-function playPiece(){
-    
+function playPiece(event){
+    const tileElement = event.target;
+    const tileIndex = tileElement.id;
+    console.log(1);
+    if (turnPlayer === true){
+        tileElement.textContent = "X";
+        player1Pieces.push(tileIndex);
+    } else {
+        tileElement.textContent = "O";
+        player2Pieces.push(tileIndex);
+    }
+    turnPlayer = !turnPlayer;
 }
 
 function evalWinCon(){
