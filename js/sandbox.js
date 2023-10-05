@@ -52,21 +52,20 @@ document.addEventListener("DOMContentLoaded", createElements);
 
 let turnPlayer = true;
 
-let playedPiecesArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-
 let player1Pieces = [];
 let player2Pieces = [];
 
 function playPiece(event){
     const tileElement = event.target;
     const tileIndex = tileElement.id;
-    console.log(1);
     if (turnPlayer === true){
         tileElement.textContent = "X";
         player1Pieces.push(tileIndex);
+        tileElement.removeEventListener("click", playPiece);
     } else {
         tileElement.textContent = "O";
         player2Pieces.push(tileIndex);
+        tileElement.removeEventListener("click", playPiece);
     }
     turnPlayer = !turnPlayer;
 }
