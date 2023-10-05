@@ -1,8 +1,6 @@
 function createElements(){
     const app = document.getElementById("app");
 
-    
-
     const title = document.createElement("h1");
     title.classList.add("d-flex", "justify-content-center", "mt-5");
     title.textContent = "Tic-Tac-Toe";
@@ -32,7 +30,7 @@ function createElements(){
     }
 
     const buttonRow = document.createElement("div");
-    buttonRow.classList.add("row", "justify-content-center", "pt-5");
+    buttonRow.classList.add("row", "justify-content-center", "pt-3");
     app.appendChild(buttonRow);
 
     const restartButton = document.createElement("button");
@@ -42,11 +40,31 @@ function createElements(){
 
 }
 
-function createTiles(){
-    const tileElement = document.createElement("div");
-    tileElement.classList.add("col-4", "mx-auto", "py-5", "text-center", "tiles");
+function createTiles(index){
+    const tileElement = document.createElement("button");
+    tileElement.classList.add("col-4", "py-5", "text-center", "tiles");
+    tileElement.id = index;
     tileElement.textContent = "hello";
     return tileElement;
 }
 
 document.addEventListener("DOMContentLoaded", createElements);
+
+const tilesButtons = document.getElementsByClassName("tiles");
+
+tilesButtons.addEventListener("click", playPiece);
+
+let turnPlayer = true;
+
+let playedPiecesArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+let player1Pieces = [];
+let player2Pieces = [];
+
+function playPiece(){
+    
+}
+
+function evalWinCon(){
+
+}
