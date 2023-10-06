@@ -103,7 +103,7 @@ function evalWinCon(){
 // play piece function
 function playPiece(event){
     const tileElement = event.target;
-    const tileIndex = tileElement.id;
+    const tileIndex = parseInt(tileElement.id);
     if (turnPlayer === true){
         tileElement.textContent = "X";
         player1Pieces.push(tileIndex);
