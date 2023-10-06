@@ -65,6 +65,8 @@ function restartGame(){
         let tileElement = document.getElementById(i);
         tileElement.textContent = "";
         tileElement.addEventListener("click", playPiece);
+        let winMessage = document.getElementById("win-message");
+        winMessage.textContent = "";
     }
 }
 
@@ -88,16 +90,18 @@ function evalWinCon(){
 
         if (player1Pieces.includes(index0) && player1Pieces.includes(index1) && player1Pieces.includes(index2)){
             const player1Winner = document.createElement("div");
-            player1Winner.classList.add("col-12");
+            player1Winner.classList.add("col-12", "text-center", "mt-5");
+            player1Winner.id = "win-message";
             player1Winner.textContent = "You Win!!!";
             app.appendChild(player1Winner);
-            //disableListeners();
+            disableListeners();
         } else if (player2Pieces.includes(index0) && player2Pieces.includes(index1) && player2Pieces.includes(index2)){
             const player2Winner = document.createElement("div");
-            player2Winner.classList.add("col-12");
+            player2Winner.classList.add("col-12", "text-center", "mt-5");
+            player2Winner.id = "win-message";
             player2Winner.textContent = "You Win!!!";
             app.appendChild(player2Winner);
-            //disableListeners();
+            disableListeners();
         }
     }
 }
@@ -119,9 +123,11 @@ function playPiece(event){
     evalWinCon();
 }
 
-// function disableListeners(event){
-//     const tileElement = event.target;
-//     tileElement.removeEventListener("click", playPiece);
-// }
+function disableListeners(){
+    for (i=0; i<=8; i++){
+        let tileElement = document.getElementById(i); 
+        tileElement.removeEventListener("click", playPiece);
+    }
+}
 
 
