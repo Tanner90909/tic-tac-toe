@@ -16,13 +16,15 @@ function createElements(){
     // input element 1
     const player1NameInput = document.createElement("input");
     player1NameInput.classList.add("col-3", "ms-5", "rounded-pill");
-    player1NameInput.placeholder = "Player 1";
+    player1NameInput.id = "input1";
+    player1NameInput.placeholder = "Player X";
     inputRow.appendChild(player1NameInput);
 
     // input element 2
     const player2NameInput = document.createElement("input");
     player2NameInput.classList.add("col-3", "ms-5", "rounded-pill");
-    player2NameInput.placeholder = "Player 2";
+    player2NameInput.id = "input2";
+    player2NameInput.placeholder = "Player O";
     inputRow.appendChild(player2NameInput);
 
     // row for gameboard tiles
@@ -65,6 +67,8 @@ function restartGame(){
         let tileElement = document.getElementById(i);
         tileElement.textContent = "";
         tileElement.addEventListener("click", playPiece);
+        let winMessage = document.getElementById("win-message");
+        winMessage.textContent = "";
     }
 }
 
@@ -79,6 +83,8 @@ let possibleWinCons = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6],[3,4,5],[
 
 // eval win con function
 function evalWinCon(){
+    player1NameInput = document.getElementById("input1");
+    player2NameInput = document.getElementById("input2");
     const app = document.getElementById("app");
     for (let i=0; i<possibleWinCons.length; i++){
         const winCon = possibleWinCons[i];
@@ -88,16 +94,26 @@ function evalWinCon(){
 
         if (player1Pieces.includes(index0) && player1Pieces.includes(index1) && player1Pieces.includes(index2)){
             const player1Winner = document.createElement("div");
-            player1Winner.classList.add("col-12");
-            player1Winner.textContent = "You Win!!!";
+            player1Winner.classList.add("col-12", "text-center", "mt-5");
+            player1Winner.id = "win-message";
+            if(player1NameInput.value === ""){
+                player1Winner.textContent = "Player X Won!"
+            } else{
+                player1Winner.textContent = player1NameInput.value + " You Win!!!";
+            }
             app.appendChild(player1Winner);
-            //disableListeners();
+            disableListeners();
         } else if (player2Pieces.includes(index0) && player2Pieces.includes(index1) && player2Pieces.includes(index2)){
             const player2Winner = document.createElement("div");
-            player2Winner.classList.add("col-12");
-            player2Winner.textContent = "You Win!!!";
+            player2Winner.classList.add("col-12", "text-center", "mt-5");
+            player2Winner.id = "win-message";
+            if(player2NameInput.value === ""){
+                player2Winner.textContent = "Player O Won!"
+            } else{
+                player2Winner.textContent = player2NameInput.value + " You Win!!!";
+            }
             app.appendChild(player2Winner);
-            //disableListeners();
+            disableListeners();
         }
     }
 }
@@ -119,9 +135,11 @@ function playPiece(event){
     evalWinCon();
 }
 
-// function disableListeners(event){
-//     const tileElement = event.target;
-//     tileElement.removeEventListener("click", playPiece);
-// }
+function disableListeners(){
+    for (i=0; i<=8; i++){
+        let tileElement = document.getElementById(i); 
+        tileElement.removeEventListener("click", playPiece);
+    }
+}
 
 

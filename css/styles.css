@@ -1,4 +1,25 @@
+body {
+    background: linear-gradient(#cfe1e5, #07faa1, #cfe1e5);
+    height: 100vh;
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+h1 {
+    font-size: 60px;
+}
+
 .tiles {
+    background-color:#cfe1e5;
     border: solid 3px black;
     height: 16vh;
+    font-size: 60px;
+}
+
+.rounded-pill {
+    background-color:#cfe1e5;
+    font-weight: bold;
+}
+
+#win-message {
+    font-size: 60px;
 }
