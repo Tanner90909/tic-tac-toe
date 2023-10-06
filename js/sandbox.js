@@ -91,11 +91,13 @@ function evalWinCon(){
             player1Winner.classList.add("col-12");
             player1Winner.textContent = "You Win!!!";
             app.appendChild(player1Winner);
+            //disableListeners();
         } else if (player2Pieces.includes(index0) && player2Pieces.includes(index1) && player2Pieces.includes(index2)){
             const player2Winner = document.createElement("div");
             player2Winner.classList.add("col-12");
             player2Winner.textContent = "You Win!!!";
             app.appendChild(player2Winner);
+            //disableListeners();
         }
     }
 }
@@ -117,6 +119,9 @@ function playPiece(event){
     evalWinCon();
 }
 
-
+// function disableListeners(event){
+//     const tileElement = event.target;
+//     tileElement.removeEventListener("click", playPiece);
+// }
 
 
