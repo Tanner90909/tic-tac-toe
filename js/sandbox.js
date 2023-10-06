@@ -64,6 +64,29 @@ let turnPlayer = true;
 let player1Pieces = [];
 let player2Pieces = [];
 
+let possibleWinCons = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6],[3,4,5],[6,7,8]];
+
+function evalWinCon(){
+    for (let i=0; i<possibleWinCons.length; i++){
+        const winCon = possibleWinCons[i];
+        const index0 = winCon[0];
+        const index1 = winCon[1];
+        const index2 = winCon[2];
+
+        if (player1Pieces.includes(index0) && player1Pieces.includes(index1) && player1Pieces.includes(index2)){
+            const player1Winner = document.createElement("div");
+            player1Winner.classList.add("col-12");
+            player1Winner.textContent = "You Win!!!";
+            app.appendChild(player1Winner);
+        } else if (player2Pieces.includes(index0) && player2Pieces.includes(index1) && player2Pieces.includes(index2)){
+            const player2Winner = document.createElement("div");
+            player2Winner.classList.add("col-12");
+            player2Winner.textContent = "You Win!!!";
+            app.appendChild(player2Winner);
+        }
+    }
+}
+
 function playPiece(event){
     const tileElement = event.target;
     const tileIndex = tileElement.id;
@@ -77,10 +100,9 @@ function playPiece(event){
         tileElement.removeEventListener("click", playPiece);
     }
     turnPlayer = !turnPlayer;
+    evalWinCon();
 }
 
-let possibleWinCons = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6],[3,4,5],[6,7,8]];
 
-function evalWinCon(){
 
-}
+
